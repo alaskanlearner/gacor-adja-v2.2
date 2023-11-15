@@ -1,5 +1,5 @@
 # SET BASE IMAGE OS
-FROM python:3.12-alpine3.18
+FROM python:3.12
 
 # UPDATE AND INSTALL GIT, BUILD ESSENTIAL
 RUN apk update && apk add --no-cache git build-base
@@ -23,7 +23,8 @@ RUN pip install -U pip
 # INSTALL REQUIREMENTS
 RUN pip install -U \
                 --no-cache-dir \
-                -r requirements.txt
+                -r requirements.txt \
+                requests
 
 # COMMAND TO RUN
 CMD ["python", "main.py"]
